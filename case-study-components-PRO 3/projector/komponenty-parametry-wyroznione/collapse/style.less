@@ -1,0 +1,194 @@
+#projector_collapse {
+    display: none;
+    margin-bottom: 2rem;
+    
+    @media(min-width: 979px) {
+      max-width: 270px;
+      width: 270px;
+      grid-column: 2 !important;
+      justify-self: end;
+    }
+    
+    &.--skeleton {
+      .projector_collapse__headline {
+        background: #EFEFEF;
+      }
+      
+      .projector_collapse__headline .headline_name, 
+      .projector_collapse__headline .headline_after,
+      .collapse__headline.--link {
+        font-size: 0;
+      }
+    }
+    
+    .projector_collapse__headline {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.5rem;
+      .font_headline();
+      
+      .headline_name{
+        font-size: 1.2rem;
+        font-weight: 600;
+        line-height: 16px;
+      }
+      
+      .headline_after{
+        font-size: 2.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        line-height: 24px;
+      }
+    }
+
+    .collapse {
+        &__wrapper {}
+
+        &__headline {
+            display: flex;
+            position: relative;
+            background: #EFEFEF;
+            font-size: 1.4rem;
+            font-weight: 600;
+            line-height: 20px;
+            text-decoration: none;
+            padding: .9rem 1.2rem 1rem;
+            margin-bottom: 2px;
+
+            &:after {
+                content: '\F107';
+                font-family: fontawesome;
+                position: absolute;
+                right: 1.2rem;
+                font-weight: 100;
+            }
+            
+            &.--not_expanded {
+              color: @less_iaicolorscheme_background_text_color;
+              
+              &:after {
+                content: '';
+              }
+            }
+
+            &.--active {
+                &:after {
+                    content: '\F106';
+                }
+            }
+        }
+
+        &__description {
+            height: 0;
+            transition: height .3s ease;
+            overflow: hidden;
+
+            .--list {
+                height: 0;
+                transition: height .3s ease;
+                overflow: hidden;
+            }
+
+            .--item {
+                padding: 1rem;
+                
+                &:last-child {
+                  padding-bottom: 2rem;
+                }
+
+                & > .--link {
+                    display: flex;
+                    position: relative;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    max-width: max-content;
+
+                    &:after {
+                        content: '\F107';
+                        font-family: fontawesome;
+                        position: absolute;
+                        right: -2rem;
+                        font-weight: 100;
+                    }
+        
+                    &.--active {
+                        &:after {
+                            content: '\F106';
+                        }
+                    }
+                }
+                
+                .--list {
+                  padding: 0 1rem;
+                  
+                  li{
+                    padding-top: .7rem;
+                    font-size: 1.2rem;
+                    
+                    &:first-child {
+                      padding-top: 2rem;
+                    }
+                  }
+                }
+            }
+        }
+    }
+    
+    li {
+      list-style: none;
+    }
+}
+
+.traits {
+    font-size: 1.3rem;
+
+    &.--show {
+        .traits__item {
+            display: flex;
+        }
+
+        .traits__all {
+            display: none;
+        }
+    }
+
+    &__item {
+        display: flex;
+
+        &[data-hide="true"] {
+            display: none;
+        }
+    }
+
+    &__label {
+        width: 95px;
+        min-width: 95px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &:after {
+            content: ':';
+        }
+    }
+
+    &__values {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__value {
+        margin-right: 0.5rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &:after {
+            content: ',';
+        }
+
+        &:last-child {
+            &:after {
+                display: none;
+            }
+        }
+    }
+}
